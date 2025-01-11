@@ -1,8 +1,8 @@
 
-[![License: MIT](https://img.shields.io/npm/l/@dwtechs/winstan.svg?color=brightgreen)](https://opensource.org/licenses/MIT)
-[![npm version](https://badge.fury.io/js/%40dwtechs%2Fwinstan.svg)](https://www.npmjs.com/package/@dwtechs/winstan)
-[![last version release date](https://img.shields.io/github/release-date/DWTechs/Winstan.js)](https://www.npmjs.com/package/@dwtechs/winstan)
-[![minified size](https://img.shields.io/bundlephobia/min/@dwtechs/winstan?color=brightgreen)](https://www.npmjs.com/package/@dwtechs/winstan)
+[![License: MIT](https://img.shields.io/npm/l/@dwtechs/winstan-plugin-express-perf.svg?color=brightgreen)](https://opensource.org/licenses/MIT)
+[![npm version](https://badge.fury.io/js/%40dwtechs%2Fwinstan-plugin-express-perf.svg)](https://www.npmjs.com/package/@dwtechs/winstan-plugin-express-perf)
+[![last version release date](https://img.shields.io/github/release-date/DWTechs/Winstan-plugin-express-perf.js)](https://www.npmjs.com/package/@dwtechs/winstan-plugin-express-perf)
+[![minified size](https://img.shields.io/bundlephobia/min/@dwtechs/winstan-plugin-express-perf?color=brightgreen)](https://www.npmjs.com/package/@dwtechs/winstan-plugin-express-perf)
 
 - [Synopsis](#synopsis)
 - [Support](#support)
@@ -17,19 +17,21 @@
 
 ## Synopsis
 
-**[Winstan.js](https://github.com/DWTechs/Winstan.js)** is an Open source Winston setup wrapper library for easier logging with less code.
+**[Winstan-plugin-express-perf.js](https://github.com/DWTechs/Winstan-plugin-express-perf.js)** is an open source Express performance measurement plugin for Winstan library.
 
-- Only 1 small dependency to check inputs variables
+**This plugin will log the time it took to process a request.**
+
+- no dependency
 - Very lightweight
 - Thoroughly tested
-- Works in Javascript, Typescript
+- Works in Javascript and Typescript
 - Can be used as EcmaScrypt module
 - Written in Typescript
 
 
 ## Support
 
-- node: 16
+- node: 22
 
 This is the oldest targeted versions. The library should work properly on older versions of Node.js but we do not support it officially.  
 
@@ -37,7 +39,7 @@ This is the oldest targeted versions. The library should work properly on older 
 ## Installation
 
 ```bash
-$ npm i @dwtechs/winstan
+$ npm i @dwtechs/winstan-plugin-express-perf
 ```
 
 
@@ -47,130 +49,7 @@ $ npm i @dwtechs/winstan
 ### ES6 / TypeScript
 
 ```javascript
-import { log } from "@dwtechs/winstan";
 
-log.error(`App cannot start: ${err.msg}`);
-log.info(`App started on port : ${PORT}`);
-log.debug(`UpdateOne(user=${JSON.stringify(users)})`);
-
-```
-
-
-### Levels
-
-Winstan reduces log levels to four : 
-  - error,
-  - warn,
-  - info,
-  - debug
-
-
-## Configure
-
-Winstan will start with the following default configuration : 
-
-```Javascript
-  let defaultSN = "";
-  let defaultTZ = "europe/paris";
-  let defaultLocale = "fr-FR"
-  let defaultNodeEnv = "development";
-```
-
-**DefaultSN** is the service name. (Or the application name)
-If provided, it will appear at the beginning of every log.
-It is useful in a multi-service or multi-application monitoring tool.
-
-You can configure Winstan using 2 methods :
-
-### Environment variables
-
-Four environment variables may be used by Winstan : 
-
-example :
-
-```bash
-  LOCALE="en-EN"
-  TZ="UTC"
-  NODE_ENV="production"
-  SERVICE_NAME="ms_user"
-```
-
-These environment variables will update the default values of the lib at start up.
-So you do not need to init the library in the code.
-
-```javascript
-
-import { log } from "@dwtechs/winstan";
-
-log.info(`App started on port : ${PORT}`);
-
-```
-
-**TZ** is the timezone configuration to set time to your region.
-
-### init() method
-
-This method will override ENV variables.
-
-```javascript
-
-import { log, init } from "@dwtechs/winstan";
-const options = {
-  timeZone: "UTC",
-  locale: "fr-FR",
-  serviceName: "ms_user",
-  level: "debug"
-}
-init(options);
-log.info(`App started on port : ${PORT}`);
-
-```
-
-### Production mode
-
-Possible values for **NODE_ENV** environment variable are "production" and "prod".
-Those values will set Winstan log level to **info**.
-Any other value (like "dev" or "development") will set the log level to **debug**
-
-
-## API Reference
-
-
-```javascript
-
-export type Levels = 'error'|'warn'|'info'|'debug';
-
-export type Options = {
-  timeZone: string;
-  locale: string;
-  serviceName: string;
-  level: Levels;
-};
-
-init(options: Options): void {}
-
-log(size: number): number {}
-
-```
-
-
-## Express.js plugin
-
-Winstan comes with a utility plugin for Express.js.
-
-### Performances measurement
-
-This plugin will log the time it took to process a request.
-
-#### Installation
-
-```bash
-$ npm i @dwtechs/winstan-plugin-express-perf
-```
-
-#### Usage
-
-```javascript
 import express from "express";
 import { perf } from '@dwtechs/winstan-plugin-express-perf';
 
@@ -181,13 +60,14 @@ app.use(perf.start);
 app.use("/", route);
 // Performance measurement ends
 app.use(perf.end);
+
 ```
 
 
 ## Contributors
 
-Winstan.js is still in development and we would be glad to get all the help you can provide.
-To contribute please read **[contributor.md](https://github.com/DWTechs/Winstan.js/blob/main/contributor.md)** for detailed installation guide.
+Winstan-plugin-express-perf.js is still in development and we would be glad to get all the help you can provide.
+To contribute please read **[contributor.md](https://github.com/DWTechs/Winstan-plugin-express-perf.js/blob/main/contributor.md)** for detailed installation guide.
 
 
 ## Stack
