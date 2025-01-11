@@ -13,7 +13,7 @@ interface MyRequest extends Request {
  * @param {type} next - The next function
  * @return {type} undefined
  */
-function start(req: MyRequest, _res: Response, next: NextFunction) {
+function start(req: MyRequest, _res: Response, next: NextFunction): void {
   log.info(`Request started on ${req.method}${req.url}`);
   req.perf = Date.now();
   next();
@@ -27,7 +27,7 @@ function start(req: MyRequest, _res: Response, next: NextFunction) {
  * @param {Function} next - The next function in the middleware chain
  * @return {void} This function does not return anything
  */
-function end(req: MyRequest, _res: Response, next: NextFunction) {
+function end(req: MyRequest, _res: Response, next: NextFunction): void {
   const delta = req.perf ? Date.now() - req.perf : 0;
   log.info(`Request ended on ${req.method}${req.url} in ${delta}ms`);
   next();
