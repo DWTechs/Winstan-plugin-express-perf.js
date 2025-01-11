@@ -9,8 +9,6 @@
 - [Installation](#installation)
 - [Usage](#usage)
   - [ES6](#es6)
-- [Configure](#configure)
-- [API Reference](#api-reference)
 - [Contributors](#contributors)
 - [Stack](#stack)
 
@@ -51,7 +49,7 @@ $ npm i @dwtechs/winstan-plugin-express-perf
 ```javascript
 
 import express from "express";
-import { perf } from '@dwtechs/winstan-plugin-express-perf';
+import perf from '@dwtechs/winstan-plugin-express-perf';
 
 const app = express();
 app.use(express.json());

@@ -33,7 +33,7 @@ function end(req: MyRequest, _res: Response, next: NextFunction) {
   next();
 }
 
-export {
+export default {
   start,
   end,
 };

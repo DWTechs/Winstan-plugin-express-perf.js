@@ -36,5 +36,9 @@ function end(req, _res, next) {
     log.info(`Request ended on ${req.method}${req.url} in ${delta}ms`);
     next();
 }
+var winstanPluginExpressPerf = {
+    start,
+    end,
+};
 
-export { end, start };
+export { winstanPluginExpressPerf as default };

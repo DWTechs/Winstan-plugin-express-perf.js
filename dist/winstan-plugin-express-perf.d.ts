@@ -33,11 +33,8 @@ interface MyRequest extends Request {
 
 declare function start(req: MyRequest, _res: Response, next: NextFunction): void;
 declare function end(req: MyRequest, _res: Response, next: NextFunction): void;
-declare const perf: {
+declare const _default: {
   start: typeof start;
   end: typeof end;
 };
-
-export { 
-  perf,
-};
+export default _default;
