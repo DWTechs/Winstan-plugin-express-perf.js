@@ -61,6 +61,9 @@ app.use(perf.end);
 
 ```
 
+Note that the plugin is standalone as it installs Winstan as a dependency.
+Of course you will usually need Winstan to log other things in you application. 
+
 
 ## Contributors
 
