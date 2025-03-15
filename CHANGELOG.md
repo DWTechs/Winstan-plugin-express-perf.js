@@ -1,4 +1,4 @@
-# 0.2.0 (Mar 15th 2025)
+# 0.1.1 (Mar 15th 2025)
 
 - update Winstan dependency to 0.4.0
 
