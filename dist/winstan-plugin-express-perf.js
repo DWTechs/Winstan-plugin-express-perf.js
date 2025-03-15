@@ -26,19 +26,16 @@ https://github.com/DWTechs/Winstan-plugin-express-perf.js
 
 import { log } from '@dwtechs/winstan';
 
-function start(req, _res, next) {
-    log.info(`Request started on ${req.method}${req.url}`);
-    req.perf = Date.now();
+function start(req, res, next) {
+    log.info(`Request started on ${req.method}${req.url}`, { user: "System" });
+    res.locals.perf = Date.now();
     next();
 }
-function end(req, _res, next) {
-    const delta = req.perf ? Date.now() - req.perf : 0;
-    log.info(`Request ended on ${req.method}${req.url} in ${delta}ms`);
+function end(req, res, next) {
+    const perf = res.locals.perf;
+    const delta = perf ? Date.now() - perf : 0;
+    log.info(`Request ended on ${req.method}${req.url} in ${delta}ms`, { user: "System" });
     next();
 }
-var winstanPluginExpressPerf = {
-    start,
-    end,
-};
 
-export { winstanPluginExpressPerf as default };
+export { end, start };
