@@ -27,14 +27,14 @@ https://github.com/DWTechs/Winstan-plugin-express-perf.js
 import { log } from '@dwtechs/winstan';
 
 function start(req, res, next) {
-    log.info(`Request started on ${req.method}${req.url}`, { user: "System" });
+    log.info(`Request started on ${req.method}${req.url}`);
     res.locals.perf = Date.now();
     next();
 }
 function end(req, res, next) {
     const perf = res.locals.perf;
     const delta = perf ? Date.now() - perf : 0;
-    log.info(`Request ended on ${req.method}${req.url} in ${delta}ms`, { user: "System" });
+    log.info(`Request ended on ${req.method}${req.url} in ${delta}ms`);
     next();
 }
 

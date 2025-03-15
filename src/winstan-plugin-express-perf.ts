@@ -10,7 +10,7 @@ import type { Request, Response, NextFunction } from 'express';
  * @return {type} undefined
  */
 function start(req: Request, res: Response, next: NextFunction): void {
-  log.info(`Request started on ${req.method}${req.url}`, { user: "System" });
+  log.info(`Request started on ${req.method}${req.url}`);
   res.locals.perf = Date.now();
   next();
 }
@@ -26,7 +26,7 @@ function start(req: Request, res: Response, next: NextFunction): void {
 function end(req: Request, res: Response, next: NextFunction): void {
   const perf = res.locals.perf;
   const delta = perf ? Date.now() - perf : 0;
-  log.info(`Request ended on ${req.method}${req.url} in ${delta}ms`, { user: "System" });
+  log.info(`Request ended on ${req.method}${req.url} in ${delta}ms`);
   next();
 }
 
