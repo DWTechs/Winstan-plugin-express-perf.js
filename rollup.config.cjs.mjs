@@ -1,19 +1,13 @@
-import resolve from "@rollup/plugin-node-resolve";
-
 const config =  {
   input: "build/es6/winstan-plugin-express-perf.js",
   output: {
-    name: "winstan",
-    file: "build/winstan-plugin-express-perf.cjs.js",
+    file: "build/winstan-plugin-express-perf.js",
     format: "cjs"
   },
   external: [
+    "@dwtechs/winstan",
   ],
-  plugins: [
-    resolve({
-      mainFields: ['module', 'main']
-    }),
-  ]
+  plugins: []
 };
 
 export default config;

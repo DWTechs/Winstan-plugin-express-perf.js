@@ -12,8 +12,12 @@ const files   = [
     dest: `${dest}winstan-plugin-express-perf.d.ts`
   },
   {
-    src:  `${src}winstan-plugin-express-perf.mjs`,
+    src:  `${src}winstan-plugin-express-perf.js`,
     dest: `${dest}winstan-plugin-express-perf.js`
+  },
+  {
+    src:  `${src}winstan-plugin-express-perf.mjs`,
+    dest: `${dest}winstan-plugin-express-perf.mjs`
   },
 ];
 

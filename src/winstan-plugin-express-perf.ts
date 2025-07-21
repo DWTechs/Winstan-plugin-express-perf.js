@@ -9,7 +9,7 @@ import type { Request, Response, NextFunction } from 'express';
  * @param {type} next - The next function
  * @return {type} undefined
  */
-function start(req: Request, res: Response, next: NextFunction): void {
+function startTimer(req: Request, res: Response, next: NextFunction): void {
   log.info(`Request started on ${req.method}${req.url}`);
   res.locals.perf = Date.now();
   next();
@@ -23,7 +23,7 @@ function start(req: Request, res: Response, next: NextFunction): void {
  * @param {Function} next - The next function in the middleware chain
  * @return {void} This function does not return anything
  */
-function end(req: Request, res: Response, next: NextFunction): void {
+function endTimer(req: Request, res: Response, next: NextFunction): void {
   const perf = res.locals.perf;
   const delta = perf ? Date.now() - perf : 0;
   log.info(`Request ended on ${req.method}${req.url} in ${delta}ms`);
@@ -31,6 +31,6 @@ function end(req: Request, res: Response, next: NextFunction): void {
 }
 
 export {
-  start,
-  end,
+  startTimer,
+  endTimer,
 };

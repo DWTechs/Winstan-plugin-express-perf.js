@@ -8,7 +8,8 @@
 - [Support](#support)
 - [Installation](#installation)
 - [Usage](#usage)
-  - [ES6](#es6)
+  - [ES6 / TypeScript](#es6--typescript)
+  - [CommonJS](#commonjs)
 - [Contributors](#contributors)
 - [Stack](#stack)
 
@@ -23,7 +24,8 @@
 - Very lightweight
 - Thoroughly tested
 - Works in Javascript and Typescript
-- Can be used as EcmaScrypt module
+- Supports both CommonJS and ES Modules
+- Tree-shaking friendly with named exports
 - Written in Typescript
 
 
@@ -47,18 +49,31 @@ $ npm i @dwtechs/winstan-plugin-express-perf
 ### ES6 / TypeScript
 
 ```javascript
-
 import express from "express";
-import perf from '@dwtechs/winstan-plugin-express-perf';
+import { startTimer, endTimer } from '@dwtechs/winstan-plugin-express-perf';
 
 const app = express();
 app.use(express.json());
 // performance measurement starts for any call to the following routes
-app.use(perf.start);
+app.use(startTimer);
 app.use("/", route);
 // Performance measurement ends
-app.use(perf.end);
+app.use(endTimer);
+```
 
+### CommonJS
+
+```javascript
+const express = require("express");
+const { startTimer, endTimer } = require('@dwtechs/winstan-plugin-express-perf');
+
+const app = express();
+app.use(express.json());
+// performance measurement starts for any call to the following routes
+app.use(startTimer);
+app.use("/", route);
+// Performance measurement ends
+app.use(endTimer);
 ```
 
 Note that the plugin is standalone as it installs Winstan as a dependency.
