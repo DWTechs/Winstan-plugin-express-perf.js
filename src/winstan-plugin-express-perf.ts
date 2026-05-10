@@ -2,31 +2,33 @@ import { log } from "@dwtechs/winstan";
 import type { Request, Response, NextFunction } from 'express';
 
 /**
- * A function that logs the request start and sets the request performance timestamp.
+ * Express middleware that logs the request start and sets the request performance timestamp.
  *
- * @param {type} req - The request object
- * @param {type} res - The response object
- * @param {type} next - The next function
- * @return {type} undefined
+ * @param {Request} req - The request object
+ * @param {Response} res - The response object
+ * @param {NextFunction} next - The next function
+ * @return {void}
  */
 function startTimer(req: Request, res: Response, next: NextFunction): void {
-  log.info(`Request started on ${req.method}${req.url}`);
   res.locals.perf = Date.now();
+  log.info(() => `Request started on ${req.method}${req.url}`);
   next();
 }
 
 /**
- * Logs the end of a request and calculates the time it took.
+ * Express middleware that logs the request end and the time elapsed since startTimer.
  *
- * @param {Object} req - The request object
- * @param {Object} res - The response object
- * @param {Function} next - The next function in the middleware chain
- * @return {void} This function does not return anything
+ * @param {Request} req - The request object
+ * @param {Response} res - The response object
+ * @param {NextFunction} next - The next function in the middleware chain
+ * @return {void}
  */
 function endTimer(req: Request, res: Response, next: NextFunction): void {
-  const perf = res.locals.perf;
-  const delta = perf ? Date.now() - perf : 0;
-  log.info(`Request ended on ${req.method}${req.url} in ${delta}ms`);
+  log.info(() => {
+    const perf: number | undefined = res.locals.perf;
+    const delta = perf ? Date.now() - perf : 0;
+    return `Request ended on ${req.method}${req.url} in ${delta}ms`;
+  });
   next();
 }
 

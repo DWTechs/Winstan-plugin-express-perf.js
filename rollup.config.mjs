@@ -1,7 +1,7 @@
 const config =  {
-  input: "build/es6/winstan-plugin-express-perf.js",
+  input: "build/winstan-plugin-express-perf.js",
   output: {
-    name: "winstan",
+    name: "winstan-plugin-express-perf",
     file: "build/winstan-plugin-express-perf.mjs",
     format: "es"
   },

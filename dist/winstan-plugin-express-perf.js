@@ -24,21 +24,20 @@ SOFTWARE.
 https://github.com/DWTechs/Winstan-plugin-express-perf.js
 */
 
-'use strict';
-
-var winstan = require('@dwtechs/winstan');
+import { log } from '@dwtechs/winstan';
 
 function startTimer(req, res, next) {
-    winstan.log.info(`Request started on ${req.method}${req.url}`);
     res.locals.perf = Date.now();
+    log.info(() => `Request started on ${req.method}${req.url}`);
     next();
 }
 function endTimer(req, res, next) {
-    const perf = res.locals.perf;
-    const delta = perf ? Date.now() - perf : 0;
-    winstan.log.info(`Request ended on ${req.method}${req.url} in ${delta}ms`);
+    log.info(() => {
+        const perf = res.locals.perf;
+        const delta = perf ? Date.now() - perf : 0;
+        return `Request ended on ${req.method}${req.url} in ${delta}ms`;
+    });
     next();
 }
 
-exports.endTimer = endTimer;
-exports.startTimer = startTimer;
+export { endTimer, startTimer };

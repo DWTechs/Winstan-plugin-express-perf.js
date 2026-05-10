@@ -1,5 +1,5 @@
 
-const fs      = require('fs');
+import fs from 'fs';
 
 const mail    = 'https://github.com/DWTechs/Winstan-plugin-express-perf.js';
 const CRLF    = '\r\n';
@@ -12,12 +12,8 @@ const files   = [
     dest: `${dest}winstan-plugin-express-perf.d.ts`
   },
   {
-    src:  `${src}winstan-plugin-express-perf.js`,
-    dest: `${dest}winstan-plugin-express-perf.js`
-  },
-  {
     src:  `${src}winstan-plugin-express-perf.mjs`,
-    dest: `${dest}winstan-plugin-express-perf.mjs`
+    dest: `${dest}winstan-plugin-express-perf.js`
   },
 ];
 

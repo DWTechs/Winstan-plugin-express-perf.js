@@ -1,18 +1,20 @@
 {
   "name": "@dwtechs/winstan-plugin-express-perf",
   "version": "0.2.0",
+  "type": "module",
   "description": "Open source Express performance measurement plugin for Winstan library.",
   "keywords": [
-    "perf"
+    "Express",
+    "performance",
+    "middleware",
+    "Winstan"
   ],
   "homepage": "https://github.com/DWTechs/Winstan-plugin-express-perf.js",
   "main": "dist/winstan-plugin-express-perf.js",
-  "module": "dist/winstan-plugin-express-perf.mjs",
   "types": "dist/winstan-plugin-express-perf.d.ts",
   "exports": {
     ".": {
-      "import": "./dist/winstan-plugin-express-perf.mjs",
-      "require": "./dist/winstan-plugin-express-perf.js",
+      "import": "./dist/winstan-plugin-express-perf.js",
       "types": "./dist/winstan-plugin-express-perf.d.ts"
     }
   },
@@ -21,36 +23,36 @@
     "url": "https://github.com/DWTechs/Winstan-plugin-express-perf.js"
   },
   "bugs": {
-    "url": "https://github.com/DWTechs/Winstan-plugin-express-perf.js/issues",
-    "email": ""
+    "url": "https://github.com/DWTechs/Winstan-plugin-express-perf.js/issues"
   },
   "license": "MIT",
+  "engines": {
+    "node": ">=22"
+  },
   "author": {
     "name": "Ludovic Cluber",
     "email": "http://www.lcluber.com/contact",
     "url": "http://www.lcluber.com"
   },
-  "contributors": [],
   "scripts": {
-    "start": "",
     "prebuild": "npm install",
     "build": "node ./scripts/clear && tsc && npm run rollup && node ./scripts/copy && npm run test",
     "rollup:mjs": "rollup --config rollup.config.mjs",
-    "rollup:cjs": "rollup --config rollup.config.cjs.mjs",
-    "rollup": "npm run rollup:mjs && npm run rollup:cjs",
-    "test": ""
+    "rollup": "npm run rollup:mjs",
+    "test": "jest --coverage"
   },
   "files": [
     "dist/"
   ],
   "dependencies": {
-    "@dwtechs/winstan": "0.4.0"
+    "@dwtechs/winstan": "0.7.0"
   },
   "devDependencies": {
-    "@types/express": "5.0.0",
-    "@rollup/plugin-node-resolve": "15.3.0",
-    "core-js": "3.38.1",
+    "@babel/preset-env": "7.26.0",
+    "@types/express": "5.0.6",
+    "babel-jest": "29.7.0",
+    "jest": "29.7.0",
     "rollup": "4.24.0",
-    "typescript": "5.6.3"
+    "typescript": "6.0.3"
   }
 }
