@@ -15,7 +15,7 @@
 
 **[Winstan-plugin-express-perf.js](https://github.com/DWTechs/Winstan-plugin-express-perf.js)** is an open source Express performance measurement plugin for Winstan library.
 
-**This plugin will log the time it took to process a request.**
+This plugin will log the time it took to process a request.
 
 - 📦 Only 1 dependency for logging
 - 🪶 Very lightweight
