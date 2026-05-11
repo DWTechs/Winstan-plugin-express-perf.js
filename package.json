@@ -10,7 +10,6 @@
     "Winstan"
   ],
   "homepage": "https://github.com/DWTechs/Winstan-plugin-express-perf.js",
-  "main": "dist/winstan-plugin-express-perf.js",
   "types": "dist/winstan-plugin-express-perf.d.ts",
   "exports": {
     ".": {
